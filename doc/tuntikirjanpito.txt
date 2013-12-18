@@ -1,0 +1,13 @@
+Tuntikirjanpito:
+	Muoto:
+		pvm
+		aika:kohde
+
+16.12.2013
+16:30-17:45: Taistelua projektin alustuksen kanssa
+23:00-01:00: Kirjastojen asentelua ja selvittelyä
+01:00-01:30: Säätöä kirjastojen kanssa
+
+17.12.2013
+13:00-19:00: Kirjastot, mita hemmettia.
+19:00-22:30: Aiheen vaihos

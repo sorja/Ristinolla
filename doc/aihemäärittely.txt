@@ -1,0 +1,9 @@
+Aihe: Perus ristinolla
+
+K‰ytt‰j‰t: Pelaajat
+
+Kaikkien k‰ytt‰jien toiminnot:
+	Voivat pelata peli‰
+	Voivat (ehk‰) vaihtaa asetuksia:
+		Vaikeus, v‰rit, resot, ‰‰net
+	
