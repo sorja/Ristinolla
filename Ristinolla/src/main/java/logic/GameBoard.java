@@ -1,4 +1,4 @@
-package gameboard;
+package logic;
 
 public class GameBoard {
 
