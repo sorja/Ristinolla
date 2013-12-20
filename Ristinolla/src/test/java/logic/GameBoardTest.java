@@ -1,4 +1,4 @@
-package GameBoardTest;
+package logic;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
