@@ -48,10 +48,11 @@ public class GameBoardTest {
     public void isWidthCorrect(){
         assertEquals(_gB.getWidth(), 3);
     }
-//    
-//    @Test
-//    public void isGetSquareRight(){
-//        Square[] sqrs = _gB.getSquares();
-//        assertEquals(amount, amount);
-//    }
+    
+    @Test
+    public void isGetSquareRight(){
+        Square sq = _gB.getSquareAtXY(1, 1);
+        Square[] squares = _gB.getSquares();
+        assertEquals(squares[4], sq);
+    }
 }
