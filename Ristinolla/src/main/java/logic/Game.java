@@ -21,23 +21,74 @@ public class Game {
         } else {
             _gB.getSquareAtXY(x, y).setSquareState(SquareState.CIRCLE);
         }
-        update();
+
+        checkWinningCondition(x, y);
+        _playerTurn = !_playerTurn;
+
     }
 
-    public void update() {
-        int sequence = 0;
-    }
-
-    public boolean isSquareOnTheEdge(Square s) {
-        //        Have to update square to make this work (get x/y)
-
-        return false;
-    }
-
+//    public boolean isSquareOnTheEdge(Square s) {
+//        //        Have to update square to make this work (get x/y)
+//
+//        return false;
+//    }
     public GameBoard getGameBoard() {
         return _gB;
     }
-    
-    
+
+    private void checkWinningCondition(int x, int y) {
+        SquareState s = _playerTurn ? SquareState.CROSS : SquareState.CIRCLE;
+
+    }
+
+    private boolean isHorizontalWinning(SquareState s, int x, int y) {
+
+        int sequence = 0;
+
+        sequence = isOnRightEdge(s, x, y) ? 3 : 0;
+        sequence = isOnLeftEdge(s, x, y) ? 3 : 0;
+        sequence = isOnMiddleEdge(s, x, y) ? 3 : 0;
+
+        if (x == 0) {
+
+        }
+
+        return sequence == 3;
+    }
+
+    private boolean isOnRightEdge(SquareState s, int x, int y) {
+        if (x == _gB.getWidth() - 1) {
+            if (_gB.getSquareAtXY(x - 1, y).getSquareState() == s && _gB.getSquareAtXY(x - 2, y).getSquareState() == s) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean isOnLeftEdge(SquareState s, int x, int y) {
+        if (x == 0) {
+            if (_gB.getSquareAtXY(x + 1, y).getSquareState() == s && _gB.getSquareAtXY(x + 2, y).getSquareState() == s) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean isOnMiddleEdge(SquareState s, int x, int y) {
+        if (x != 0 && x != _gB.getWidth() - 1) {
+            if (_gB.getSquareAtXY(x + 1, y).getSquareState() == s && _gB.getSquareAtXY(x - 1, y).getSquareState() == s) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean isVerticalWinning(SquareState s) {
+        return false;
+    }
+
+    private boolean isDiagonalWinning(SquareState s) {
+        return false;
+    }
 
 }
