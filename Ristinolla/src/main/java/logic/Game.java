@@ -45,9 +45,9 @@ public class Game {
 
         int sequence = 0;
 
-        sequence = isOnRightEdge(s, x, y) ? 3 : 0;
-        sequence = isOnLeftEdge(s, x, y) ? 3 : 0;
-        sequence = isOnMiddleEdge(s, x, y) ? 3 : 0;
+        sequence = isWinningFromRight(s, x, y) ? 3 : 0;
+        sequence = isWinningFromLeft(s, x, y) ? 3 : 0;
+        sequence = isWinningFromMiddle(s, x, y) ? 3 : 0;
 
         if (x == 0) {
 
@@ -56,7 +56,7 @@ public class Game {
         return sequence == 3;
     }
 
-    private boolean isOnRightEdge(SquareState s, int x, int y) {
+    private boolean isWinningFromRight(SquareState s, int x, int y) {
         if (x == _gB.getWidth() - 1) {
             if (_gB.getSquareAtXY(x - 1, y).getSquareState() == s && _gB.getSquareAtXY(x - 2, y).getSquareState() == s) {
                 return true;
@@ -65,7 +65,7 @@ public class Game {
         return false;
     }
 
-    private boolean isOnLeftEdge(SquareState s, int x, int y) {
+    private boolean isWinningFromLeft(SquareState s, int x, int y) {
         if (x == 0) {
             if (_gB.getSquareAtXY(x + 1, y).getSquareState() == s && _gB.getSquareAtXY(x + 2, y).getSquareState() == s) {
                 return true;
@@ -74,7 +74,7 @@ public class Game {
         return false;
     }
 
-    private boolean isOnMiddleEdge(SquareState s, int x, int y) {
+    private boolean isWinningFromMiddle(SquareState s, int x, int y) {
         if (x != 0 && x != _gB.getWidth() - 1) {
             if (_gB.getSquareAtXY(x + 1, y).getSquareState() == s && _gB.getSquareAtXY(x - 1, y).getSquareState() == s) {
                 return true;
