@@ -1,6 +1,6 @@
 package ristinolla;
 
-import logic.GameBoard;
+import ristinolla.logic.GameBoard;
 
 /**
  * Hello world!

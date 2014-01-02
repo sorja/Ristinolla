@@ -1,5 +1,5 @@
 
-package logic;
+package ristinolla.logic;
 
 /**
  *

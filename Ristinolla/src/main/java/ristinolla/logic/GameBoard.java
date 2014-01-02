@@ -1,4 +1,4 @@
-package logic;
+package ristinolla.logic;
 
 public class GameBoard {
 

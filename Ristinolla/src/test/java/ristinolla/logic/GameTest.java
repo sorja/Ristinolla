@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package logic;
+package ristinolla.logic;
 
+import ristinolla.logic.GameBoard;
+import ristinolla.logic.SquareState;
+import ristinolla.logic.Game;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

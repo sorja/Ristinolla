@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package logic;
+package ristinolla.logic;
 
-import logic.Square;
-import logic.SquareState;
+import ristinolla.logic.Square;
+import ristinolla.logic.SquareState;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
