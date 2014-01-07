@@ -34,4 +34,19 @@ public class GameTest {
         _game.turn(1, 1);
         assertEquals(SquareState.CIRCLE, _game.getGameBoard().getSquareAtXY(1, 1).getSquareState());
     }
+
+    @Test
+    public void testWinningConditionHorizontal() {
+        _game.turn(0, 0);
+        _game.turn(0, 1);
+        
+        _game.turn(1, 0);
+        _game.turn(1, 1);
+        
+        _game.turn(2, 0);
+        _game.turn(2, 1);
+
+        
+        assertEquals(_game.isGameWon() && !_game.isPlayerTurn(), true);
+    }
 }
