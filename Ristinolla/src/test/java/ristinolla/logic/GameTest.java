@@ -63,7 +63,7 @@ public class GameTest {
 
     @Test
     public void testWinningConditionDiagonal() {
-        _game.turn(1, 1);
+            _game.turn(1, 1);
         _game.turn(2, 0);
 
         _game.turn(0, 0);
