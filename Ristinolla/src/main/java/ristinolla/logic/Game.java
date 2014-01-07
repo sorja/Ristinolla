@@ -17,7 +17,7 @@ public class Game {
      */
     public Game(GameBoard gB) {
         _gameBoard = gB;
-        _playerTurn = false;
+        _playerTurn = true;
         _gameWon = false;
     }
 
@@ -127,6 +127,18 @@ public class Game {
 
     public boolean isPlayerTurn() {
         return _playerTurn;
+    }
+
+    public void resetBoard() {
+        for (int x = 0; x < _gameBoard.getWidth(); x++) {
+            for (int y = 0; y < _gameBoard.getHeight(); y++) {
+                if (_gameBoard.getSquareAtXY(x, y).getSquareState() != SquareState.EMPTY) {
+                    _gameBoard.getSquareAtXY(x, y).setSquareState(SquareState.EMPTY);
+                }
+
+            }
+
+        }
     }
 
 }
