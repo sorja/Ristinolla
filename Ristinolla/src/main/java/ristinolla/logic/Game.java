@@ -45,8 +45,10 @@ public class Game {
             return;
         }
         _playerTurn = !_playerTurn;
-
-        printGameBoard();
+//        if (_gameWon) {
+//            printGameBoard();
+//        }
+        System.out.println(_gameBoard.getSquareAtXY(x, y).getSquareState());
     }
 
     /**
@@ -106,19 +108,19 @@ public class Game {
     private boolean isDiagonalWinning(SquareState s, int x, int y) {
         boolean winning = true;
         if (x == 0 && y == 0) {
-            System.out.println("first if");
+
             for (int i = 1; i < 3; i++) {
                 winning = winning && (_gameBoard.getSquareAtXY(x + i, y + i).getSquareState() == s);
             }
-        } else if (y == _gameBoard.getHeight() - 1 && x == _gameBoard.getWidth()) {
-            System.out.println("second if");
+        } else if (y == _gameBoard.getHeight() - 1 && x == _gameBoard.getWidth() - 1) {
             for (int i = 1; i < 3; i++) {
-                winning = winning && (_gameBoard.getSquareAtXY(x - i, y - 1).getSquareState() == s);
+
+                winning = winning && (_gameBoard.getSquareAtXY(x - i, y - i).getSquareState() == s);
 
             }
         } else {
-            System.out.println("'else'");
             for (int i = -1; i < 2; i++) {
+
                 winning = winning && (_gameBoard.getSquareAtXY(x + i, y + i).getSquareState() == s);
             }
         }
