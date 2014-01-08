@@ -70,7 +70,7 @@ public class GameTest {
         _game.turn(2, 1);
 
         _game.turn(2, 2);
-        assertEquals(_game.isGameWon() && !_game.isPlayerTurn(), true);
+        assertEquals(_game.isGameWon(), true);
 
     }
 

@@ -106,28 +106,43 @@ public class Game {
     }
 
     private boolean isDiagonalWinning(SquareState s, int x, int y) {
-        boolean winning = true;
-        if (x == 0 && y == 0 && y + 2 < _gameBoard.getHeight() && x + 2 < _gameBoard.getWidth()) {
-
-            for (int i = 1; i < 3; i++) {
-                winning = winning && (_gameBoard.getSquareAtXY(x + i, y + i).getSquareState() == s);
+//        boolean winning = true;
+//        if (x == 0 && y == 0 && y + 2 < _gameBoard.getHeight() && x + 2 < _gameBoard.getWidth()) {
+//
+//            for (int i = 1; i < 3; i++) {
+//                winning = winning && (_gameBoard.getSquareAtXY(x + i, y + i).getSquareState() == s);
+//            }
+//        } else if (y == _gameBoard.getHeight() - 1 && x == _gameBoard.getWidth() - 1
+//                && x - 2 > 0 && y - 2 > 0) {
+//            for (int i = 1; i < 3; i++) {
+//
+//                winning = winning && (_gameBoard.getSquareAtXY(x - i, y - i).getSquareState() == s);
+//
+//            }
+//        } else if (y - 1 > 0 && x - 1 > 0 && y + 1 < _gameBoard.getHeight() && x + 1 < _gameBoard.getWidth()) {
+//            for (int i = -1; i < 2; i++) {
+//
+//                winning = winning && (_gameBoard.getSquareAtXY(x + i, y + i).getSquareState() == s);
+//            }
+//        } else {
+//            return false;
+//        }
+//        return winning;
+        int i = 0;
+        for (int yi = 0; yi < _gameBoard.getHeight() - 1; yi++) {
+            for (int xi = 0; xi < _gameBoard.getWidth() - 1; xi++) {
+                if (_gameBoard.getSquareAtXY(xi, yi).getSquareState() == s) {
+                    i++;
+                    if (xi + 1 < _gameBoard.getWidth()
+                            && yi + 1 < _gameBoard.getHeight()
+                            && _gameBoard.getSquareAtXY(xi + 1, yi + 1).getSquareState() != s) {
+                        i = 0;
+                    }
+                    
+                }
             }
-        } else if (y == _gameBoard.getHeight() - 1 && x == _gameBoard.getWidth() - 1
-                && x - 2 > 0 && y - 2 > 0) {
-            for (int i = 1; i < 3; i++) {
-
-                winning = winning && (_gameBoard.getSquareAtXY(x - i, y - i).getSquareState() == s);
-
-            }
-        } else if (y - 1 > 0 && x - 1 > 0 && y + 1 < _gameBoard.getHeight() && x + 1 < _gameBoard.getWidth()) {
-            for (int i = -1; i < 2; i++) {
-
-                winning = winning && (_gameBoard.getSquareAtXY(x + i, y + i).getSquareState() == s);
-            }
-        } else {
-            return false;
         }
-        return winning;
+        return i == 3;
     }
 
     public boolean isGameWon() {
