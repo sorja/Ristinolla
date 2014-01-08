@@ -41,13 +41,11 @@ public class Game {
 
         if (checkWinningCondition(x, y)) {
             System.out.println("Winner!");
+            printGameBoard();
             _gameWon = true;
             return;
         }
         _playerTurn = !_playerTurn;
-//        if (_gameWon) {
-//            printGameBoard();
-//        }
         System.out.println(_gameBoard.getSquareAtXY(x, y).getSquareState());
     }
 
@@ -129,16 +127,14 @@ public class Game {
 //        }
 //        return winning;
         int i = 0;
-        for (int yi = 0; yi < _gameBoard.getHeight() - 1; yi++) {
-            for (int xi = 0; xi < _gameBoard.getWidth() - 1; xi++) {
-                if (_gameBoard.getSquareAtXY(xi, yi).getSquareState() == s) {
-                    i++;
-                    if (xi + 1 < _gameBoard.getWidth()
-                            && yi + 1 < _gameBoard.getHeight()
-                            && _gameBoard.getSquareAtXY(xi + 1, yi + 1).getSquareState() != s) {
-                        i = 0;
-                    }
-                    
+        for (int xi = 0; xi <= _gameBoard.getWidth() - 1; xi++) {
+            System.out.println("tarkastaa (" + xi + "," + xi + ")");
+            if (_gameBoard.getSquareAtXY(xi, xi).getSquareState() == s) {
+                i++;
+                if (xi + 1 < _gameBoard.getWidth()
+                        && xi + 1 < _gameBoard.getHeight()
+                        && _gameBoard.getSquareAtXY(xi + 1, xi + 1).getSquareState() != s) {
+                    i = 0;
                 }
             }
         }
@@ -170,12 +166,12 @@ public class Game {
         for (int x = 0; x < _gameBoard.getWidth(); x++) {
             for (int y = 0; y < _gameBoard.getHeight(); y++) {
                 if (_gameBoard.getSquareAtXY(x, y).getSquareState() == SquareState.CIRCLE) {
-                    System.out.print("O");
+                    System.out.print(" O ");
 
-                } else if (_gameBoard.getSquareAtXY(x, y).getSquareState() == SquareState.CIRCLE) {
-                    System.out.print("X");
+                } else if (_gameBoard.getSquareAtXY(x, y).getSquareState() == SquareState.CROSS) {
+                    System.out.print(" X ");
                 } else {
-                    System.out.print(" ");
+                    System.out.print("[ ]");
                 }
 
             }
