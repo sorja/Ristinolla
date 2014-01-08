@@ -7,6 +7,7 @@ package ristinolla.ui;
 
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -43,17 +44,19 @@ public class Ui implements Runnable {
 
     private void luoKomponentit(Container container) {
         container.setLayout(new GridLayout(_game.getGameBoard().getWidth(), _game.getGameBoard().getHeight()));
+        
+        for (int y = 0; y < _game.getGameBoard().getWidth(); y++) {
+            for (int x = 0; x < _game.getGameBoard().getHeight(); x++) {
+                JButton j = new JButton();
+                TextManager t = new TextManager(j, _game, x, y);
+                j.addActionListener(t);
+                j.setFont(new Font("Dialog", 1, 70));
+                container.add(j);
 
-        for (int i = 0; i < _game.getGameBoard().getHeight() * _game.getGameBoard().getWidth(); i++) {
-
-            JButton j = new JButton(i + "");
-            TextManager t = new TextManager(j, _game);
-            j.addActionListener(t);
-            container.add(j);
+            }
 
         }
 
-        MouseListener m = new MouseListener();
     }
 
 }
