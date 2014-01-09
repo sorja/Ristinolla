@@ -5,6 +5,7 @@
  */
 package ristinolla.ui;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -14,12 +15,12 @@ import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 import ristinolla.logic.Game;
 
-public class Ui implements Runnable {
+public class UI implements Runnable {
 
     private JFrame frame;
     private Game _game;
 
-    public Ui(Game gameBoard) {
+    public UI(Game gameBoard) {
         this._game = gameBoard;
     }
 
@@ -51,7 +52,10 @@ public class Ui implements Runnable {
                 TextManager t = new TextManager(j, _game, x, y);
                 j.addActionListener(t);
                 j.setFont(new Font("Dialog", 1, 70));
+                j.setOpaque(true);
+                j.setBackground(Color.white);
                 container.add(j);
+                System.out.println("button " +x+y+ "done");
 
             }
 
