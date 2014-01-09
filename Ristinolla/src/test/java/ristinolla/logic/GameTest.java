@@ -45,7 +45,7 @@ public class GameTest {
 
         _game.turn(2, 0);
 
-        assertEquals(_game.isGameWon() && !_game.isPlayerTurn(), true);
+        assertEquals(_game.isGameWon(), true);
     }
 
     @Test
@@ -58,7 +58,7 @@ public class GameTest {
 
         _game.turn(0, 2);
 
-        assertEquals(_game.isGameWon() && !_game.isPlayerTurn(), true);
+        assertEquals(_game.isGameWon(), true);
     }
 
     @Test

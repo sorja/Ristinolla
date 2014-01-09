@@ -1,5 +1,7 @@
 package ristinolla.logic;
 
+import ristinolla.ui.UI;
+
 /**
  *
  * @author miro
@@ -9,13 +11,13 @@ public class Game {
     private GameBoard _gameBoard;
     private boolean _playerTurn;
     private boolean _gameWon;
-
+    
     /**
      * Setting gameboard and playerturn.
      *
      * @param gB : Setting up a gameboard
      */
-    public Game(GameBoard gB) {
+    public Game(GameBoard gB, UI ui) {
         _gameBoard = gB;
         _playerTurn = true;
         _gameWon = false;
@@ -150,6 +152,7 @@ public class Game {
     }
 
     public void resetBoard() {
+        System.out.println("reset");
         for (int x = 0; x < _gameBoard.getWidth(); x++) {
             for (int y = 0; y < _gameBoard.getHeight(); y++) {
                 if (_gameBoard.getSquareAtXY(x, y).getSquareState() != SquareState.EMPTY) {

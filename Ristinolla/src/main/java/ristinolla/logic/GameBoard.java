@@ -37,4 +37,14 @@ public class GameBoard {
         return _squares[y * _width + x];
     }
 
+    public void setHeight(int _height) {
+        this._height = _height;
+    }
+
+    public void setWidth(int _width) {
+        this._width = _width;
+    }
+    
+    
+
 }

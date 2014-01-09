@@ -12,6 +12,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import ristinolla.logic.Game;
 
@@ -20,8 +21,8 @@ public class UI implements Runnable {
     private JFrame frame;
     private Game _game;
 
-    public UI(Game gameBoard) {
-        this._game = gameBoard;
+    public UI(Game game) {
+        this._game = game;
     }
 
     @Override
@@ -45,21 +46,23 @@ public class UI implements Runnable {
 
     private void luoKomponentit(Container container) {
         container.setLayout(new GridLayout(_game.getGameBoard().getWidth(), _game.getGameBoard().getHeight()));
-        
+
         for (int y = 0; y < _game.getGameBoard().getWidth(); y++) {
             for (int x = 0; x < _game.getGameBoard().getHeight(); x++) {
                 JButton j = new JButton();
-                TextManager t = new TextManager(j, _game, x, y);
+                TextManager t = new TextManager(j, _game, x, y, frame);
                 j.addActionListener(t);
                 j.setFont(new Font("Dialog", 1, 70));
                 j.setOpaque(true);
                 j.setBackground(Color.white);
                 container.add(j);
-                System.out.println("button " +x+y+ "done");
+                System.out.println("button " + x + y + "done");
 
             }
 
         }
+
+        
 
     }
 
