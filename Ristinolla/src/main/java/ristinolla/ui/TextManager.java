@@ -12,6 +12,10 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import ristinolla.logic.Game;
 
+/**
+ *
+ * @author miro
+ */
 public class TextManager implements ActionListener {
 
     private final JButton j;
@@ -19,6 +23,9 @@ public class TextManager implements ActionListener {
     private int _x, _y;
     private JFrame _frame;
 
+    /**
+     * Takes a button object, game object, x and y values and the frame used
+     */
     public TextManager(JButton j, Game _g, int x, int y, JFrame f) {
         this.j = j;
         this._g = _g;
@@ -30,21 +37,21 @@ public class TextManager implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (_g.isGameWon()) {
-           JOptionPane.showMessageDialog(_frame,
-                "Reset the game by pressing OK",
-                "Reset",
-                JOptionPane.PLAIN_MESSAGE);
             _g.resetBoard();
             
-            
+            JOptionPane.showMessageDialog(_frame,
+                    "Game over, congrats! Winner:" + (_g.isPlayerTurn() ? "X" : "O"),
+                    "Winner found!",
+                    JOptionPane.PLAIN_MESSAGE);
+
             return;
         }
         System.out.println(_x + " " + _y);
         if (j.getText().isEmpty()) {
             j.setText(_g.isPlayerTurn() ? "X" : "O");
         }
-        _g.turn(_x, _y);    
-        
+        _g.turn(_x, _y);
+
     }
 
 }

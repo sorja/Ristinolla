@@ -62,7 +62,7 @@ public class GameTest {
     }
 
     @Test
-    public void testWinningConditionDiagonal() {
+    public void testWinningConditionDiagonalTopLeft() {
         _game.turn(1, 1);
         _game.turn(2, 0);
 
@@ -74,4 +74,38 @@ public class GameTest {
 
     }
 
+    @Test
+    public void testWinningConditionDiagonalTopRight() {
+        _game.turn(2, 0); //Top right
+        _game.turn(0, 0);
+
+        _game.turn(1, 1); //Middle
+        _game.turn(2, 1);
+
+        _game.turn(0, 2); //Bottom left
+        assertEquals(_game.isGameWon(), true);
+
+    }
+
+    @Test
+    public void returnIfAlreadyInPlace() {
+        _game.turn(0, 1);
+        _game.turn(0, 1);
+        _game.turn(1, 1);
+        assertEquals(_game.getGameBoard().getSquareAtXY(0, 1).getSquareState(), SquareState.CROSS);
+    }
+    
+    @Test
+    public void resetWorks(){
+        _game.turn(0,1);
+        _game.resetBoard();
+        assertEquals(_game.getGameBoard().getSquareAtXY(0, 1).getSquareState(), SquareState.EMPTY);
+    }
+    
+    @Test
+    public void getIsPlayerTurn(){
+        assertEquals(_game.isPlayerTurn(), true);
+    }
+
 }
+

@@ -16,11 +16,19 @@ import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import ristinolla.logic.Game;
 
+/**
+ * General user interface of the game
+ * @author miro
+ */
 public class UI implements Runnable {
 
     private JFrame frame;
     private Game _game;
 
+    /**
+     * Give the UI the game object used
+     * @param game
+     */
     public UI(Game game) {
         this._game = game;
     }
@@ -40,6 +48,10 @@ public class UI implements Runnable {
         frame.setVisible(true);
     }
 
+    /**
+     *
+     * @return
+     */
     public JFrame getFrame() {
         return frame;
     }

@@ -5,7 +5,6 @@ package ristinolla.logic;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -20,37 +19,38 @@ import ristinolla.logic.Square;
  * @author miro
  */
 public class GameBoardTest {
+
     private GameBoard _gB;
+
     public GameBoardTest() {
     }
 
-    
     @Before
     public void setUp() {
-        _gB = new GameBoard(3,3);
+        _gB = new GameBoard(3, 3);
     }
-    
+
     @After
     public void tearDown() {
     }
 
     @Test
-    public void isSizeRight(){
-        assertEquals(_gB.getSquares().length, 3*3);
+    public void isSizeRight() {
+        assertEquals(_gB.getSquares().length, 3 * 3);
     }
-    
+
     @Test
-    public void isHeightCorrect(){
+    public void isHeightCorrect() {
         assertEquals(_gB.getHeight(), 3);
     }
-    
+
     @Test
-    public void isWidthCorrect(){
+    public void isWidthCorrect() {
         assertEquals(_gB.getWidth(), 3);
     }
-    
+
     @Test
-    public void isGetSquareRight(){
+    public void isGetSquareRight() {
         Square sq = _gB.getSquareAtXY(1, 1);
         Square[] squares = _gB.getSquares();
         assertEquals(squares[4], sq);

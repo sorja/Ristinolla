@@ -3,7 +3,7 @@ package ristinolla.logic;
 import ristinolla.ui.UI;
 
 /**
- *
+ * 
  * @author miro
  */
 public class Game {
@@ -11,13 +11,13 @@ public class Game {
     private GameBoard _gameBoard;
     private boolean _playerTurn;
     private boolean _gameWon;
-    
+
     /**
      * Setting gameboard and playerturn.
      *
      * @param gB : Setting up a gameboard
      */
-    public Game(GameBoard gB, UI ui) {
+    public Game(GameBoard gB) {
         _gameBoard = gB;
         _playerTurn = true;
         _gameWon = false;
@@ -52,9 +52,7 @@ public class Game {
     }
 
     /**
-     * Returns gameboard
-     *
-     * @return returns gameboard used
+     * @return 
      */
     public GameBoard getGameBoard() {
         return _gameBoard;
@@ -105,6 +103,11 @@ public class Game {
         return winning;
     }
 
+    private boolean isWithinBounds(int x, int y) {
+        return (x >= 0 && x < _gameBoard.getWidth())
+                && (y >= 0 && y < _gameBoard.getHeight());
+    }
+
     private boolean isDiagonalWinning(SquareState s, int x, int y) {
 //        boolean winning = true;
 //        if (x == 0 && y == 0 && y + 2 < _gameBoard.getHeight() && x + 2 < _gameBoard.getWidth()) {
@@ -128,29 +131,80 @@ public class Game {
 //            return false;
 //        }
 //        return winning;
-        int i = 0;
-        for (int xi = 0; xi <= _gameBoard.getWidth() - 1; xi++) {
-            System.out.println("tarkastaa (" + xi + "," + xi + ")");
-            if (_gameBoard.getSquareAtXY(xi, xi).getSquareState() == s) {
-                i++;
-                if (xi + 1 < _gameBoard.getWidth()
-                        && xi + 1 < _gameBoard.getHeight()
-                        && _gameBoard.getSquareAtXY(xi + 1, xi + 1).getSquareState() != s) {
-                    i = 0;
-                }
-            }
-        }
-        return i == 3;
+        /*
+         int i = 0;
+         for (int x = 0; x <= _gameBoard.getWidth() - 1; x++) {
+         System.out.println("tarkastaa (" + x + "," + x + ")");
+         if (_gameBoard.getSquareAtXY(x, x).getSquareState() == s) {
+         i++;
+         if (x + 1 < _gameBoard.getWidth()
+         && x + 1 < _gameBoard.getHeight()
+         && _gameBoard.getSquareAtXY(x + 1, x + 1).getSquareState() != s) {
+         i = 0;
+         }
+         }
+         }
+
+         int ii = 0;
+
+         for (int y = 0; y < _gameBoard.getHeight() - 1; y++) {
+         for (int x = _gameBoard.getWidth() - 1; x >= 0; x--) {
+         System.out.println("tarkastaa diagonal: (" + x + "," + y + ")");
+
+         if (_gameBoard.getSquareAtXY(x, y).getSquareState() == s) {
+         ii++;
+         if (isWithinBounds(x + 1, y + 1)
+         && _gameBoard.getSquareAtXY(x + 1, y + 1).getSquareState() != s) {
+         ii = 0;
+         }
+         }
+
+         }
+         }
+         return i == 3 || ii == 3;
+         */
+        int diagonalTopLeft = countInDirection(s, x, y, +1, +1) + countInDirection(s, x, y, -1, -1);
+        int diagonalTopRight = countInDirection(s, x, y, -1, +1) + countInDirection(s, x, y, +1, -1);
+        return diagonalTopLeft == 2 || diagonalTopRight == 2;
     }
 
+    private int countInDirection(SquareState s, int startX, int startY, int xDirection, int yDirection) {
+        int result = 0;
+        int x = startX + xDirection;
+        int y = startY + yDirection;
+
+        while (isWithinBounds(x, y)) {
+            if (_gameBoard.getSquareAtXY(x, y).getSquareState() != s) {
+                break;
+            }
+
+            result++;
+            x += xDirection;
+            y += yDirection;
+        }
+
+        return result;
+    }
+
+    /**
+     *
+     * @return
+     */
     public boolean isGameWon() {
         return _gameWon;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isPlayerTurn() {
         return _playerTurn;
     }
 
+    /**
+     * Resets the board
+     */
     public void resetBoard() {
         System.out.println("reset");
         for (int x = 0; x < _gameBoard.getWidth(); x++) {

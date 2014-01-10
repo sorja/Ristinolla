@@ -1,11 +1,20 @@
 package ristinolla.logic;
 
+/**
+ *
+ * @author miro
+ */
 public class GameBoard {
 
     private Square[] _squares;
     private int _height;
     private int _width;
 
+    /**
+     *
+     * @param height of the game board
+     * @param width of the game woard
+     */
     public GameBoard(int height, int width) {
         _height = height;
         _width = width;
@@ -21,29 +30,38 @@ public class GameBoard {
 
     }
 
+    /**
+     *
+     * @return
+     */
     public Square[] getSquares() {
         return _squares;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getHeight() {
         return _height;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getWidth() {
         return _width;
     }
     
+    /**
+     * Returns a square at given values
+     */
     public Square getSquareAtXY(int x, int y){
         return _squares[y * _width + x];
     }
 
-    public void setHeight(int _height) {
-        this._height = _height;
-    }
 
-    public void setWidth(int _width) {
-        this._width = _width;
-    }
     
     
 
